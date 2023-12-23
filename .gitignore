@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+db-Auth.txt
+.env
 
 # testing
 /coverage
