@@ -12,7 +12,7 @@ const Singup = () => {
   const handelsignvalue = (e) => {
     setValueSignup({ ...valueSignup, [e.target.id]: e.target.value });
   };
-  console.log(valueSignup);
+  // console.log(valueSignup);
 
   const handelSubmite = async (e) => {
     e.preventDefault();
