@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -6,11 +7,12 @@ const Singup = () => {
   const [valueSignup, setValueSignup] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
   // creating an object to post it in mongo DB
   const handelsignvalue = (e) => {
     setValueSignup({ ...valueSignup, [e.target.id]: e.target.value });
   };
-  // console.log(valueSignup);
+  console.log(valueSignup);
 
   const handelSubmite = async (e) => {
     e.preventDefault();

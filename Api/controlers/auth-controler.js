@@ -17,12 +17,12 @@ export const signup = async (req, res) => {
 };
 export const signin = async (req, res) => {
   console.log(req.body);
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  const userFind = await UsersDB.findOne({ username });
+  const userFind = await UsersDB.findOne({ email });
   try {
     if (!userFind) {
-      return res.json({ message: "User doesn't exist" });
+      return res.json({ message: "Email Or Username doesn't exist" });
     }
     const isPasswordVaild = bcryptjs.compareSync(password, userFind.password);
     if (!isPasswordVaild) {
@@ -30,11 +30,18 @@ export const signin = async (req, res) => {
     }
 
     const token = jwt.sign({ id: userFind._id }, process.env.JWT_SECRET);
+    const expiryCookiDate = new Date(Date.now() + 3600000);
+
+    // hide the password from server side
+    const { password: hashedPassword, ...rest } = userFind._doc;
 
     res
-      .cookie("access_token", token, { httpOnly: true })
+      .cookie("access_token", token, {
+        httpOnly: true,
+        expires: expiryCookiDate,
+      })
       .status(200)
-      .json(userFind);
+      .json(rest);
   } catch (error) {
     res.status(500).json({ message: "Somthing went wrong" });
   }
