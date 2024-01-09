@@ -39,6 +39,7 @@ export const signin = async (req, res) => {
       .cookie("access_token", token, {
         httpOnly: true,
         expires: expiryCookiDate,
+        // secure: true,
       })
       .status(200)
       .json(rest);
