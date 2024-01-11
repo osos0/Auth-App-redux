@@ -67,7 +67,7 @@ const Signin = () => {
       </form>
       <div className="d-flex p-4 ">
         <div>Don't Have an account ?..</div>
-        <Link to="/signup">. SIGN IN</Link>
+        <Link to="/signup">. SIGN UP</Link>
       </div>
     </>
   );

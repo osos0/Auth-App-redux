@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+
 const Header = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <>
       <div className="container fatherOfAuth">
@@ -17,8 +22,17 @@ const Header = () => {
             <Link to="/about">
               <div>About</div>
             </Link>
-            <Link to="/signin">
-              <div>Signin</div>
+            <Link to="/profile">
+              {/* {console.log(currentUser.data.profilePic)} */}
+              {currentUser ? (
+                <img
+                  src={currentUser.data.profilePic}
+                  alt="img-fileld"
+                  className="authImg"
+                />
+              ) : (
+                <div>Signin</div>
+              )}
             </Link>
           </div>
         </div>

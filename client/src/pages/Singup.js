@@ -52,7 +52,9 @@ const Singup = () => {
           onChange={handelsignvalue}
         />
         <button disabled={error}>{loading ? "Loading..." : "Sign Up"}</button>
-        <button className="btnOfGoogle">CONTINUE WITH GOOGLE</button>
+        <button type="button" className="btnOfGoogle">
+          CONTINUE WITH GOOGLE
+        </button>
       </form>
       <div className="d-flex p-4 ">
         <div>Have an account ?..</div>
